@@ -24,3 +24,22 @@ git push -u origin HEAD
 # Verify remote branch list
 git fetch origin
 git branch -r
+
+# Sign out from GitHub
+
+# 1) Sign out using GitHub CLI (interactive)
+gh auth logout --hostname github.com
+
+# 2) Or sign out non-interactively (useful in scripts)
+gh auth logout --hostname github.com --confirm
+
+# 3) Attempt to clear any cached Git credentials (best-effort; may require OS-specific action)
+# Try GCM core erase (works if git-credential-manager-core is installed)
+printf "protocol=https\nhost=github.com\n" | git credential-manager-core erase || true
+
+# Windows manual option: Open Control Panel -> Credential Manager -> Windows Credentials
+# and remove any entries related to git:https://github.com
+# macOS manual option: remove GitHub entries from Keychain Access.
+
+# 4) Verify sign-out (will print auth status or an error)
+gh auth status || true
