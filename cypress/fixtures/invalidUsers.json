@@ -1,0 +1,12 @@
+[
+  {
+    "username": "selenium1",
+    "password": "Asd123",
+    "message": "Your username is invalid!"
+  },
+  {
+    "username": "selenium",
+    "password": "invalid",
+    "message": "Your password is invalid!"
+  }
+]
